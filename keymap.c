@@ -17,13 +17,19 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
 #include QMK_KEYBOARD_H
+#include "quantum.h"
 #include <stdio.h>
 
+// Tap Dance declarations
+enum {
+    TD_SCP_ENT,
+};
 
-/* tap_dance_action_t tap_dance_actions[] = { */
-/*     [CT_MO] = ACTION_TAP_DANCE_TAP_HOLD(KC_SPC, KC_LGUI), */
-/*     [CT_ALT] = ACTION_TAP_DANCE_TAP_HOLD(KC_LGUI, KC_RALT), */
-/* }; */
+// Tap Dance definitions
+tap_dance_action_t tap_dance_actions[] = {
+    // Tap once for Escape, twice for Caps Lock
+    [TD_SCP_ENT] = ACTION_TAP_DANCE_DOUBLE(KC_SPC, KC_ENT),
+};
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [0] = LAYOUT_split_3x6_3(
@@ -34,7 +40,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
       KC_LCTL,    KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,                         KC_N,    KC_M, KC_COMM,  KC_DOT, KC_SLSH,  KC_ESC,
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
-                                          KC_LGUI, MO(1),  KC_ENT,       KC_SPC,   MO(2),   KC_RALT
+                                          KC_LGUI, MO(1),  TD(TD_SCP_ENT),       KC_SPC,   MO(2),   KC_RALT
                                       //`--------------------------'  `--------------------------'
 
   ),

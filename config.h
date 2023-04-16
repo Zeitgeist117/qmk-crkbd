@@ -31,8 +31,8 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 //#define TAPPING_FORCE_HOLD
 //#define TAPPING_TERM 100
 
-/* #define TAPPING_TERM 175 */
-/* #define TAPPING_TERM_PER_KEY */
+#define TAPPING_TERM 175
+#define TAPPING_TERM_PER_KEY
 
 #ifdef CONVERT_TO_RP2040_CE
 #endif
